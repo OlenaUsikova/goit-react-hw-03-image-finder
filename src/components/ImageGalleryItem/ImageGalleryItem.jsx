@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import PropTypes from 'prop-types'
 
 export const ImageGalleryItem = ({ image, openModal }) => {
   return (
@@ -23,3 +24,6 @@ const ImageGalleryImage = styled.img`
     cursor: zoom-in;
   }
 `;
+ImageGalleryItem.propTypes = {
+  image: PropTypes.object,
+  openModal: PropTypes.func} 

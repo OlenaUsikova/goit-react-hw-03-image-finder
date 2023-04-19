@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import PropTypes from 'prop-types'
 import { ImageGalleryItem } from '../ImageGalleryItem/ImageGalleryItem';
 
 export const ImageGallery = ({ images, openModal }) => {
@@ -27,3 +28,10 @@ const ImageGalleryList = styled.ul`
   margin-left: auto;
   margin-right: auto;
 `;
+ImageGallery.propTypes = {
+  images: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string,
+      image: PropTypes.object,
+          })),
+  openModal: PropTypes.func} 

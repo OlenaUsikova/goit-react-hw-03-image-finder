@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import { BsSearchHeart } from 'react-icons/bs';
 
 import {
@@ -29,3 +30,6 @@ export const Searchbar = ({ onSubmit }) => {
     </SearchbarWr>
   );
 };
+
+Searchbar.propTypes = {
+  onSubmit: PropTypes.func}

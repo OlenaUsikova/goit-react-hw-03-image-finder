@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
 const modalDiv = document.querySelector('#modal')
 
 export class Modal extends Component {
@@ -57,3 +58,6 @@ export class Modal extends Component {
 		font-size: 20px;
 		cursor: pointer;
 	`
+Modal.propTypes = {
+    largeImg: PropTypes.string,
+    onClose: PropTypes.func}  
