@@ -1,28 +1,23 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import styled from 'styled-components'
-
 const modalDiv = document.querySelector('#modal')
 
 export class Modal extends Component {
 	handleKeydown = e => {
 		if (e.key === 'Escape') {
-			console.log('Escape')
-			this.props.onClose()}
-		}
+			this.props.onClose()}		}
 
 	onBackdropClick = e => {
 		if (e.target === e.currentTarget) {
-			this.props.onClose()
-		}
-	}
+			this.props.onClose()		}
+			}
 	componentDidMount() {
 		document.addEventListener('keydown', this.handleKeydown)
 	}
 	componentWillUnmount() {
 		document.removeEventListener('keydown', this.handleKeydown)
 	}
-
 	render() {
 		const { onClose, largeImg } = this.props
 		return ReactDOM.createPortal(
@@ -30,7 +25,6 @@ export class Modal extends Component {
 				<ModalContent>
 				<CloseButton onClick={onClose}>×</CloseButton>
 					<img src={largeImg} alt="largeImg" />
-					
 				</ModalContent>
 			</ModalWrapper>,
 			modalDiv

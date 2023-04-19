@@ -34,7 +34,6 @@ export const SearchFormButton = styled.button`
     width: 48px;
     height: 48px;
     border: 0;
-    /* background-image: {<BsSearchHeart />}; */
     background-size: 40%;
     background-repeat: no-repeat;
     background-position: center;
@@ -45,8 +44,7 @@ export const SearchFormButton = styled.button`
     &:hover {
     opacity: 1;}
     `
-   
-   export const SearchFormButtonLabel = styled.span`
+    export const SearchFormButtonLabel = styled.span`
     position: absolute;
     width: 1px;
     height: 1px;
@@ -57,7 +55,7 @@ export const SearchFormButton = styled.button`
     clip-path: inset(50%);
     border: 0;
 `
-  
+
 export const SearchFormInput  = styled.input`
     display: inline-block;
     width: 100%;
