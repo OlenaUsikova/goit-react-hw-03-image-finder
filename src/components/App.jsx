@@ -11,14 +11,14 @@ export class App extends Component {
   state = {
     images: [],
     LargeImg: null,
-    showModal: false,
     loading: false,
     page: 1,
     error: '',
     query: '',
+    isloadMore: true,
   };
   handleSearch = data => {
-    this.setState({ query: data });
+    this.setState({ query: data, images:[], page: 1} );
   };
   openModal = data => {
     this.setState({ largeImg: data });
@@ -29,12 +29,7 @@ export class App extends Component {
   loadMore = () => {
     this.setState(prevState => ({ page: prevState.page + 1 }));
   };
-  onClose = () => {
-    this.setState(prevState => ({
-      showModal: !prevState.showModal,
-      largeItem: false,
-    }));
-  };
+
   componentDidUpdate(_, prevState) {
     if (
       prevState.query !== this.state.query ||
@@ -49,15 +44,18 @@ export class App extends Component {
           } else {
             this.setState(prevState => ({
               images: [...prevState.images, ...res.data.hits],
-            }));
-          }
+            }))
+        }
+        if((res.data.totalHits - ((prevState.page) * 12)) < 12 ){
+          this.setState({isloadMore: false})
+        }
         })
         .catch(error => {
           this.setState({ error: error.message });
         })
         .finally(() => this.setState({ loading: false }));
     }
-  }
+      }
   render() {
     const { images, largeImg } = this.state;
     return (
@@ -72,7 +70,8 @@ export class App extends Component {
             }}
           >
             <ImageGallery images={images} openModal={this.openModal} />
-            {images.length > 0 && (
+            {images.length > 0 && this.state.isloadMore &&     
+             (
               <Button clickHandler={this.loadMore}>Load more</Button>
             )}
             {largeImg && (

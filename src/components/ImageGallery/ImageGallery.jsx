@@ -31,7 +31,7 @@ const ImageGalleryList = styled.ul`
 ImageGallery.propTypes = {
   images: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.string,
+      id: PropTypes.number,
       image: PropTypes.object,
           })),
   openModal: PropTypes.func} 

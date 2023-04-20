@@ -25,5 +25,9 @@ const ImageGalleryImage = styled.img`
   }
 `;
 ImageGalleryItem.propTypes = {
-  image: PropTypes.object,
+  image: PropTypes.shape(
+    {largeImageURL: PropTypes.string,
+    webformatURL: PropTypes.string,
+    tag: PropTypes.string,}
+  ),
   openModal: PropTypes.func} 
