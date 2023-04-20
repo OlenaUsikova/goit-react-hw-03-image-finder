@@ -5,24 +5,25 @@ import PropTypes from 'prop-types'
 const modalDiv = document.querySelector('#modal')
 
 export class Modal extends Component {
-	handleKeydown = e => {
-		if (e.key === 'Escape') {
+	handlcloseModal = e => {
+		console.log(e);
+		if (e.key === 'Escape' || e.target === e.currentTarget) {
 			this.props.onClose()}		}
 
-	onBackdropClick = e => {
-		if (e.target === e.currentTarget) {
-			this.props.onClose()		}
-			}
+	// onBackdropClick = e => {
+	// 	if (e.target === e.currentTarget) {
+	// 		this.props.onClose()		}
+	// 		}
 	componentDidMount() {
-		document.addEventListener('keydown', this.handleKeydown)
+		document.addEventListener('keydown', this.handlcloseModal)
 	}
 	componentWillUnmount() {
-		document.removeEventListener('keydown', this.handleKeydown)
+		document.removeEventListener('keydown', this.handlcloseModal)
 	}
 	render() {
 		const { onClose, largeImg } = this.props
 		return ReactDOM.createPortal(
-			<ModalWrapper onClick={this.onBackdropClick}>
+			<ModalWrapper onClick={this.handlcloseModal}>
 				<ModalContent>
 				<CloseButton onClick={onClose}>×</CloseButton>
 					<img src={largeImg} alt="largeImg" />
